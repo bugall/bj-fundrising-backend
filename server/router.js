@@ -1,5 +1,9 @@
 import Router from 'koa-router'
+import User from './controller/user'
+import Payment from './controller/payment'
 
+const user = new User()
+const payment = new Payment()
 const router = new Router()
 
 /**
@@ -23,8 +27,22 @@ router.get('/zfb/payment/callback', async (ctx, next) => { })
  * @apiName 新用户注册
  * @apiGroup  User
  * @apiDescription 新用户注册
+ * @apiParam {String} username 用户名
+ * @apiParam {String} password 用户名字
+ * @apiParam {String} realName 真实的用户名
+ * @apiParam {String} idCard idCard
+ * @apiParam {String} mobile 手机号
+ * @apiSuccessExample {json} Success-Reponse
+ * {
+ *      result: <id>,
+ *      error: <errorCode>
+ * }
  * */
-router.post('/user/signin', async (ctx, next) => {})
+router.post('/user/signin', async (ctx, next) => {
+  const data = await user.signin(ctx.request.body)
+  ctx.body = data
+  next()
+})
 
 // 获取登录态
 router.get('/user/login/status', async (ctx, next) => {})

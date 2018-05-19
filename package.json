@@ -4,6 +4,7 @@
   "description": "- Node.js ==> v9.2.0",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "apidoc -i server -o doc"
   },
@@ -28,6 +29,7 @@
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
-    "apidoc": "^0.17.6"
+    "apidoc": "^0.17.6",
+    "nodemon": "^1.17.4"
   }
 }

@@ -1,9 +1,32 @@
 import Koa from 'koa'
-import Router from './router'
-import qs from 'body-qs'
+import routers from './router'
+import qs from 'koa-qs'
 import bodyParser from 'koa-bodyparser'
 
 const app = new Koa();
 qs(app)
 app.use(bodyParser())
-app.listen(3000)
+
+
+app.use((ctx, next) => {
+  return next().then(() => {
+    const tmp = {
+      action: ctx.method,
+      path: ctx.path,
+      params: JSON.stringify(ctx.request.query),
+      body: JSON.stringify(ctx.request.body),
+      status: ctx.status,
+    }
+    console.info(`log=INFO;model=http;info=${JSON.stringify(tmp)}`)
+  }).catch((err) => {
+    console.error(`log=ERROR;model=global;action=all;info=${JSON.stringify(err.stack)}`)
+    ctx.status = 500
+    ctx.body = {
+      message: err.message,
+    }
+  })
+})
+app.use(routers.routes(), routers.allowedMethods())
+app.listen(3000,'0.0.0.0', () => {
+  console.log('🌐   Listening on port: 3000')
+})
