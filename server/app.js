@@ -3,6 +3,18 @@ import routers from './router'
 import qs from 'koa-qs'
 import bodyParser from 'koa-bodyparser'
 
+// For init
+import rpc from './util/rpc'
+
+rpc.register({
+  name: 'bugall',
+  password: 'nijiaoa',
+  realName: 'bugall',
+  idCard: '123123',
+  mobile: '231231'
+}).then(result => console.log(result)).catch(err => console.log(err))
+
+
 const app = new Koa();
 qs(app)
 app.use(bodyParser())

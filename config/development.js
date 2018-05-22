@@ -1,5 +1,5 @@
 export default {
-  grpc: {
+  rpc: {
     host: 'localhost',
     port: 5555
   }
