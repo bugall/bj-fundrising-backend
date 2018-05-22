@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "apidoc -i server -o doc"
+    "doc": "apidoc -i server -o doc",
+    "rpc:server": "node test/index.js"
   },
   "repository": {
     "type": "git",

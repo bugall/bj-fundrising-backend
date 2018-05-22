@@ -22,11 +22,11 @@ message userLoginParams {
 
 message getUserInfo {
 	enum Info {
-		int32 id = 0;
-		string name = 1;
-		string realName = 2;
-		string idCard = 3;
-		string mobile = 4;
+		id = 0;
+		name = 1;
+		realName = 2;
+		idCard = 3;
+		mobile = 4;
 	}
 
 	Info result = 5;
@@ -40,11 +40,11 @@ message getRealNameDonationsParams {
 }
 
 message getRealNameDonationsResponse {
-	enmu Log {
-		int32 time = 0;
-		int32 amount = 1;
-		string way = 2;
-		string purpose = 3;
+	enum Log {
+		time = 0;
+		amount = 1;
+		way = 2;
+		purpose = 3;
 	}
 	repeated Log result = 4;
 	int32 error = 5;
@@ -55,10 +55,10 @@ message getAnonymousDonationsParams {
 }
 
 message realNameDonationsParams {
-	enmu Donation {
-		int32 time = 0;
-		int32 amount = 1;
-		string way = 2;
+	enum Donation {
+		time = 0;
+		amount = 1;
+		way = 2;
 	}
 	int32 id = 3;
 	int32 timestamp = 4;
@@ -71,28 +71,16 @@ message realNameDonationsResponse {
 	int32 error = 2;
 }
 
-message realNameDonationsParams {
-	enmu Donation {
-		int32 time = 0;
-		int32 amount = 1;
-		string way = 2;
-	}
-	int32 id = 3;
-	int32 timestamp = 4;
-	string token = 5;
-	Donation donation = 6;
-}
-
 message donationsResponse {
 	string result = 1;
 	int32 error = 2;
 }
 
 message anonymousDonateParams {
-	enmu Donation {
-		int32 time = 0;
-		int32 amount = 1;
-		string way = 2;
+	enum Donation {
+		time = 0;
+		amount = 1;
+		way = 2;
 	}
 	string mobile = 3;
 	Donation donation = 4;
@@ -101,8 +89,8 @@ message anonymousDonateParams {
 service User {
 	rpc Register(registerUserInfo) returns (registerResponse);
 	rpc GetUser(userLoginParams) returns (getUserInfo);
-	rpc GetRealNameDonations(getRealNameDonationsParams) returns (getDonationsResponse);
-	rpc GetAnonymousDonations(getAnonymousDonationsParams) returns (getDonationsResponse);
+	rpc GetRealNameDonations(getRealNameDonationsParams) returns (getRealNameDonationsResponse);
+	rpc GetAnonymousDonations(getAnonymousDonationsParams) returns (getRealNameDonationsResponse);
 	rpc RealNameDonate(realNameDonationsParams) returns (realNameDonationsResponse);
 	rpc AnonymousDonate(anonymousDonateParams) returns (donationsResponse);
 }
