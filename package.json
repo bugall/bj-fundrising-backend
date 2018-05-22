@@ -23,6 +23,7 @@
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "grpc": "^1.11.3",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.0",
     "koa-qs": "^2.0.0",
