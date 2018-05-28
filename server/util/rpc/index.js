@@ -19,6 +19,18 @@ class Grpc {
       })
     })
   }
+
+  login(opts) {
+    return new Promise((resolve, reject) => {
+      client.register(opts, (err, result) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(result)
+        }
+      })
+    })
+  }
 }
 
 export default new Grpc()
