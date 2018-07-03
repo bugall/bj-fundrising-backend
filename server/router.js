@@ -1,6 +1,7 @@
 import Router from 'koa-router'
 import User from './controller/user'
 import Payment from './controller/payment'
+import Wallet from './util/wallet'
 
 const user = new User()
 const payment = new Payment()
